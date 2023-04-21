@@ -15,7 +15,7 @@ createApp({
         },
         addItem() {
             const data = {
-                itemToPost: { '0': this.newItem, '1': true }
+                itemToPost: this.newItem
             };
             axios.post('server.php', data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
@@ -23,7 +23,7 @@ createApp({
                 this.todoList = response.data;
                 this.newItem = '';
             });
-        }
+        },
     },
     mounted() {
         this.getList();
