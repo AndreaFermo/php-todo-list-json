@@ -16,11 +16,16 @@
 
     if (isset($_POST['changeValueAt'])) {
 
-        if($todoList[$_POST['changeValueAt']]['done']){
-            $todoList[$_POST['changeValueAt']]['done'] = false;
-        } else {
-            $todoList[$_POST['changeValueAt']]['done'] = true;
-        };
+        $todoList[$_POST['changeValueAt']]['done'] = !$todoList[$_POST['changeValueAt']]['done'];
+       
+        $dataToSave= json_encode($todoList);
+        file_put_contents('database.json', $dataToSave);
+
+    }
+
+    if (isset($_POST['delate'])) {
+
+        array_splice($todoList, $_POST['delate'], 1);
 
         $dataToSave= json_encode($todoList);
         file_put_contents('database.json', $dataToSave);
