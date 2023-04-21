@@ -14,5 +14,18 @@
         file_put_contents('database.json', $dataToSave);
     }
 
+    if (isset($_POST['changeValueAt'])) {
+
+        if($todoList[$_POST['changeValueAt']]['done']){
+            $todoList[$_POST['changeValueAt']]['done'] = false;
+        } else {
+            $todoList[$_POST['changeValueAt']]['done'] = true;
+        };
+
+        $dataToSave= json_encode($todoList);
+        file_put_contents('database.json', $dataToSave);
+
+    }
+
     header('Content-Type: application/json');
     echo json_encode($todoList);

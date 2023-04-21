@@ -12,7 +12,7 @@
     <div id="app">
        <div class="container">
             <ul class="list-group">
-                <li v-for="todoItem in todoList" class="list-group-item" :class="todoItem.done?'text-decoration-line-through':''">{{todoItem.text}}</li>
+                <li v-for="(todoItem, index) in todoList" class="list-group-item" :class="todoItem.done?'text-decoration-line-through':''" @click="doneNotDone(`${index}`)">{{todoItem.text}}</li>
             </ul>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" aria-describedby="button-addon2" v-model="newItem">
